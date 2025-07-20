@@ -14,7 +14,116 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      analysis_data: {
+        Row: {
+          analysis_date: string
+          average_park_time: number | null
+          car_count: number | null
+          confidence_score: number | null
+          created_at: string
+          id: string
+          image_url: string | null
+          location_id: string
+          people_count: number | null
+          satellite_source: string
+          traffic_direction: string | null
+        }
+        Insert: {
+          analysis_date?: string
+          average_park_time?: number | null
+          car_count?: number | null
+          confidence_score?: number | null
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          location_id: string
+          people_count?: number | null
+          satellite_source: string
+          traffic_direction?: string | null
+        }
+        Update: {
+          analysis_date?: string
+          average_park_time?: number | null
+          car_count?: number | null
+          confidence_score?: number | null
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          location_id?: string
+          people_count?: number | null
+          satellite_source?: string
+          traffic_direction?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "analysis_data_location_id_fkey"
+            columns: ["location_id"]
+            isOneToOne: false
+            referencedRelation: "locations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      locations: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          latitude: number
+          location_type: string
+          longitude: number
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          latitude: number
+          location_type: string
+          longitude: number
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          latitude?: number
+          location_type?: string
+          longitude?: number
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      satellites: {
+        Row: {
+          api_endpoint: string | null
+          created_at: string
+          id: string
+          last_update: string | null
+          name: string
+          status: string | null
+        }
+        Insert: {
+          api_endpoint?: string | null
+          created_at?: string
+          id?: string
+          last_update?: string | null
+          name: string
+          status?: string | null
+        }
+        Update: {
+          api_endpoint?: string | null
+          created_at?: string
+          id?: string
+          last_update?: string | null
+          name?: string
+          status?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
